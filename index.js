@@ -22,10 +22,6 @@ var Router = {
       this.shouldUpdate = true;
   },
 
-  shouldComponentUpdate: function() {
-    return this.shouldUpdate;
-  },
-
   setRoute: function(path) {
     if (this.route && path === this.props.path)
       return this.route;
