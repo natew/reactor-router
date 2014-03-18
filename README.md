@@ -1,9 +1,8 @@
-This is a tiny router that is made to fit in with a React root level component.
+A tiny router, can be used as a mixin with React components.
 
 Used in [reactor-core](http://github.com/nate/reactor-core).
 
-The component that uses this as a mixin should use the `this.shouldUpdate` for shouldComponentUpdate like so:
+Component can implement `routerPageChange` as a function to do things between
+page changes like grab a new state or animate.
 
-    shouldComponentUpdate: function() {
-      this.shouldUpdate;
-    }
+Sets `this.route`, an object with `page` and `params`.
