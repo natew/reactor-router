@@ -1,5 +1,5 @@
 var UrlPattern = require('url-pattern');
-var Invariant  = require('react/lib/invariant');
+var invariant  = require('react/lib/invariant');
 
 var Router = {
   componentWillMount: function() {
@@ -30,6 +30,8 @@ var Router = {
   },
 
   setRoutes: function(routes) {
+    invariant(routes, 'Must set a routes key on your Reactor class with an \
+      \n object containing { \'/route\': require(\'page\')');
     if (this._routes) return; // already set
     this._routesHash = routes;
     this._routes = Object.keys(routes).map(function(path) {
@@ -40,7 +42,7 @@ var Router = {
   getRoute: function(path) {
     if (!this._routes) this.setRoutes();
 
-    Invariant(
+    invariant(
       this._routes,
       'Please run setRoutes() with a routes hash \
       before calling getRoute()'
