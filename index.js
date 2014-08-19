@@ -22,13 +22,6 @@ var Router = {
       this.shouldUpdate = true;
   },
 
-  setRoute: function(path) {
-    if (this.route && path === this.props.path)
-      return this.route;
-    this.route = Router.getRoute(path);
-    return this.route;
-  },
-
   setRoutes: function(routes) {
     invariant(routes, 'Must set a routes key on your Reactor class with an \
       \n object containing { \'/route\': require(\'page\')');
@@ -37,6 +30,13 @@ var Router = {
     this._routes = Object.keys(routes).map(function(path) {
       return { path: path, to: routes[path] };
     });
+  },
+
+  setRoute: function(path) {
+    if (this.route && path === this.props.path)
+      return this.route;
+    this.route = Router.getRoute(path);
+    return this.route;
   },
 
   getRoute: function(path) {
